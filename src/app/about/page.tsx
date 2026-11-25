@@ -107,14 +107,20 @@ export default function AboutPage() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="grid items-center gap-10 lg:grid-cols-12 lg:gap-12">
             <div className="lg:col-span-6 space-y-6">
-              <div className="flex flex-wrap items-center gap-2.5">
-                <div className="inline-flex items-center gap-2.5 rounded-full bg-logo-tint px-4 py-1.5 ring-1 ring-border-strong">
-                  <BrandSeal size="sm" className="h-8 w-8" />
-                  <span className="text-xs font-semibold uppercase tracking-[0.16em] text-ink">
+              <div className="flex flex-wrap items-center gap-2">
+                <div className="inline-flex items-center gap-2.5 rounded-full bg-logo-tint px-3.5 py-1.5 ring-1 ring-border-strong">
+                  <BrandSeal size="sm" className="hidden sm:block h-8 w-8" />
+                  <PureVegBadge
+                    iconOnly
+                    label="100% Pure Veg"
+                    displayClass="inline-flex sm:hidden"
+                    className="p-1 shadow-none"
+                  />
+                  <span className="text-[11px] font-semibold uppercase tracking-[0.14em] text-ink sm:text-xs sm:tracking-[0.16em]">
                     Our Story · <span className="font-devanagari">मृदा Bakess</span>
                   </span>
                 </div>
-                <PureVegBadge label="100% Pure Veg" />
+                <PureVegBadge label="100% Pure Veg" displayClass="hidden sm:inline-flex" />
               </div>
 
               <h1 className="font-display text-3xl font-semibold leading-tight text-ink sm:text-5xl">

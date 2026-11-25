@@ -56,26 +56,35 @@ export default function HomePage() {
     <>
       {/* ==================== HERO SECTION ==================== */}
       <section className="relative overflow-hidden bg-parchment-glow border-b border-border">
-        <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6 sm:py-16 lg:px-8 lg:py-20">
-          <div className="grid items-center gap-10 lg:grid-cols-12 lg:gap-10">
+        <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 sm:py-16 lg:px-8 lg:py-20">
+          <div className="grid items-center gap-8 lg:grid-cols-12 lg:gap-10">
             {/* Left Story & CTA Column */}
-            <div className="lg:col-span-6 space-y-6 animate-fade-up">
-              <div className="flex flex-wrap items-center gap-2.5">
-                <div className="inline-flex items-center gap-2.5 rounded-full border border-border-strong bg-logo-tint/90 px-3 py-1.5 shadow-sm">
-                  <BrandSeal size="sm" className="h-8 w-8 sm:h-9 sm:w-9" />
-                  <p className="pr-1 text-[10px] font-bold uppercase tracking-[0.16em] text-ink sm:text-[11px] sm:tracking-[0.2em]">
+            <div className="lg:col-span-6 space-y-5 sm:space-y-6 animate-fade-up">
+              <div className="flex flex-wrap items-center gap-2">
+                <div className="inline-flex items-center gap-2 rounded-full border border-border-strong bg-logo-tint/90 px-3 py-1.5 shadow-sm">
+                  <BrandSeal size="sm" className="hidden sm:block h-8 w-8" />
+                  <PureVegBadge
+                    iconOnly
+                    label="100% Pure Veg"
+                    displayClass="inline-flex sm:hidden"
+                    className="p-1 shadow-none"
+                  />
+                  <p className="text-[11px] font-bold uppercase tracking-[0.14em] text-ink sm:pr-1 sm:tracking-[0.2em]">
                     <span className="font-devanagari">मृदा Bakess</span> ·{" "}
                     <span className="text-herb">Fresh • Flavourful • Organic</span>
                   </p>
                 </div>
 
-                <PureVegBadge label="100% Pure Veg" />
+                <PureVegBadge
+                  label="100% Pure Veg"
+                  displayClass="hidden sm:inline-flex"
+                />
               </div>
 
-              <h1 className="font-display text-[2.15rem] font-semibold leading-[1.08] tracking-tight text-ink sm:text-5xl lg:text-[3.35rem]">
+              <h1 className="font-display text-[2.1rem] font-semibold leading-[1.1] tracking-tight text-ink sm:text-5xl lg:text-[3.35rem]">
                 Handcrafted{" "}
-                <span className="italic text-herb">100% Pure Veg</span> Cakes, Baked with Soul &amp;
-                Honest Prices.
+                <span className="italic text-herb pr-1.5">100% Pure Veg</span>
+                Cakes, Baked with Soul &amp; Honest Prices.
               </h1>
 
               <p className="max-w-xl text-base leading-relaxed text-ink-olive sm:text-lg">

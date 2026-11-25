@@ -31,11 +31,11 @@ export function Navbar() {
     <header className="sticky top-0 z-40 border-b border-border bg-canvas/92 backdrop-blur-md">
       {/* Subtle Pure Veg & Hours announcement bar */}
       <div className="bg-logo-tint border-b border-border/80 px-3 py-1.5 text-center text-[11px] font-medium text-ink-olive sm:px-4 sm:text-xs">
-        <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-center gap-x-3 gap-y-1">
+        <div className="mx-auto flex max-w-7xl items-center justify-center gap-x-2.5 sm:gap-x-3">
           <span className="inline-flex items-center gap-1.5 font-semibold text-herb">
             <span
               aria-hidden="true"
-              className="flex h-3 w-3 items-center justify-center rounded-[2px] border border-herb bg-white"
+              className="flex h-3 w-3 shrink-0 items-center justify-center rounded-[2px] border border-herb bg-white"
             >
               <span className="h-1.5 w-1.5 rounded-full bg-herb" />
             </span>
@@ -44,10 +44,10 @@ export function Navbar() {
           <span className="text-border-strong" aria-hidden="true">
             •
           </span>
-          <span>
+          <span className="truncate">
             <span className="font-devanagari font-semibold text-ink">मृदा Bakess</span> ·{" "}
-            <span className="hidden xs:inline sm:inline">Fresh • Flavourful • Organic</span>
-            <span className="sm:hidden">Bagla, Mandi</span>
+            <span className="hidden sm:inline">Fresh • Flavourful • Organic</span>
+            <span className="sm:hidden">Open 8 AM – 8 PM</span>
           </span>
           <span className="hidden md:inline text-border-strong" aria-hidden="true">
             |
@@ -70,24 +70,40 @@ export function Navbar() {
       </div>
 
       <div className="mx-auto flex max-w-7xl items-center justify-between gap-2 px-3 py-2.5 sm:gap-4 sm:px-6 sm:py-3 lg:px-8">
-        {/* Brand Logo Lockup */}
+        {/* Brand Logo Lockup: crisp logo + veg icon only on <sm mobile; full lockup on sm+ */}
         <Link
           href="/"
-          className="group flex min-w-0 items-center gap-2.5 focus-visible:rounded-xl sm:gap-3"
+          className="group flex min-w-0 items-center gap-2 focus-visible:rounded-xl sm:gap-3"
           onClick={() => setMobileOpen(false)}
+          aria-label="Mrida Bakess Home (100% Pure Veg)"
         >
           <BrandSeal
             size="sm"
-            className="h-10 w-10 sm:h-12 sm:w-12 transition-transform duration-300 group-hover:scale-105"
+            className="h-11 w-11 sm:h-12 sm:w-12 transition-transform duration-300 group-hover:scale-105"
           />
-          <div className="flex min-w-0 flex-col">
+
+          {/* Mobile: compact green Pure Veg icon mark beside the logo (zero text clash/truncation) */}
+          <PureVegBadge
+            iconOnly
+            label="100% Pure Veg"
+            displayClass="inline-flex sm:hidden"
+            className="shrink-0"
+          />
+
+          {/* Tablet / Desktop: full brand lockup */}
+          <div className="hidden min-w-0 flex-col sm:flex">
             <div className="flex items-center gap-2">
-              <span className="truncate font-display text-lg font-semibold leading-none tracking-tight text-ink sm:text-[1.35rem]">
+              <span className="font-display text-[1.35rem] font-semibold leading-none tracking-tight text-ink">
                 {BAKERY_INFO.brandName}
               </span>
-              <PureVegBadge label="Pure Veg" compact className="hidden sm:inline-flex py-0.5 text-[10px]" />
+              <PureVegBadge
+                label="Pure Veg"
+                compact
+                displayClass="inline-flex"
+                className="py-0.5 text-[10px]"
+              />
             </div>
-            <span className="mt-1 truncate text-[10px] font-medium uppercase tracking-[0.14em] text-ink-olive sm:text-[11px] sm:tracking-[0.16em]">
+            <span className="mt-1 text-[11px] font-medium uppercase tracking-[0.16em] text-ink-olive">
               <span className="font-devanagari">मृदा Bakess</span> · Mandi, HP
             </span>
           </div>
@@ -133,8 +149,8 @@ export function Navbar() {
             aria-label={`Open order list (${totalItems} items)`}
           >
             <ShoppingBag className="h-4 w-4 shrink-0" />
-            <span className="hidden xs:inline sm:inline">Order Tray</span>
-            <span className="xs:hidden sm:hidden">Tray</span>
+            <span className="hidden sm:inline">Order Tray</span>
+            <span className="sm:hidden">Tray</span>
             {totalItems > 0 ? (
               <span className="flex h-5 min-w-5 items-center justify-center rounded-full bg-terracotta px-1.5 text-[11px] font-bold text-white">
                 {totalItems}
@@ -163,7 +179,7 @@ export function Navbar() {
           <div className="mb-3 flex flex-wrap items-center justify-between gap-2 rounded-2xl border border-border bg-logo-tint/70 px-3.5 py-2.5 text-xs text-ink-olive">
             <span className="inline-flex items-center gap-1.5 font-medium text-ink">
               <MapPin className="h-3.5 w-3.5 text-herb" />
-              Bagla, Dohandi, Mandi – 175021
+              Mrida Bakess · Bagla, Mandi
             </span>
             <span className="inline-flex items-center gap-1 font-semibold text-herb">
               <Clock className="h-3.5 w-3.5" />

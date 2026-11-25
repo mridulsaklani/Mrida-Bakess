@@ -161,7 +161,7 @@ export function BakeryStudio3D() {
           </div>
 
           {/* 3D Canvas */}
-          <div className="relative h-[400px] w-full sm:h-[480px] lg:h-[560px]">
+          <div className="relative h-[350px] w-full sm:h-[470px] lg:h-[560px]">
             <WebGLErrorBoundary
               fallback={
                 <div className="flex h-full flex-col items-center justify-center p-8 text-center">
@@ -268,7 +268,8 @@ export function BakeryStudio3D() {
                   title="Toggle crystal bakery display dome"
                 >
                   <Box className="h-3.5 w-3.5 text-herb" />
-                  <span className="hidden xs:inline sm:inline">Glass Case</span>
+                  <span className="sm:hidden">Case</span>
+                  <span className="hidden sm:inline">Glass Case</span>
                 </button>
 
                 <button

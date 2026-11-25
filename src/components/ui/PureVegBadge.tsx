@@ -1,18 +1,29 @@
 interface PureVegBadgeProps {
   label?: string;
   compact?: boolean;
+  iconOnly?: boolean;
+  displayClass?: string;
   className?: string;
 }
 
+/**
+ * FSSAI-style green Pure Veg square-dot emblem + optional label.
+ * Uses explicit `displayClass` so callers passing `hidden sm:inline-flex`
+ * never collide with a hardcoded `inline-flex` rule in Tailwind CSS v4.
+ */
 export function PureVegBadge({
   label = "100% Pure Veg",
   compact = false,
+  iconOnly = false,
+  displayClass = "inline-flex",
   className = "",
 }: PureVegBadgeProps) {
   return (
     <span
-      className={`inline-flex items-center gap-1.5 rounded-full border border-herb/30 bg-surface/95 font-semibold text-herb shadow-xs ${
-        compact ? "px-2.5 py-1 text-[11px]" : "px-3 py-1 text-xs"
+      title={label}
+      aria-label={iconOnly ? label : undefined}
+      className={`${displayClass} items-center justify-center rounded-full border border-herb/35 bg-surface/95 font-semibold text-herb shadow-xs ${
+        iconOnly ? "p-1.5" : compact ? "gap-1.5 px-2.5 py-1 text-[11px]" : "gap-1.5 px-3 py-1 text-xs"
       } ${className}`}
     >
       <span
@@ -21,7 +32,7 @@ export function PureVegBadge({
       >
         <span className="h-1.5 w-1.5 rounded-full bg-herb" />
       </span>
-      <span>{label}</span>
+      {!iconOnly ? <span>{label}</span> : null}
     </span>
   );
 }
