@@ -1,26 +1,211 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Core Surfaces - Harmonized with Mrida Bakess logo (#F4FADE / #F3F9DD) */
+  --bg-canvas: #fafbf4;
+  --bg-logo-tint: #f4fade;
+  --bg-surface: #ffffff;
+  --bg-linen: #f0f2e3;
+  --bg-cocoa: #2d261d;
+
+  /* Ink & Typography - Harmonized with Logo Charcoal-Olive (#54513E / #1C2011) */
+  --ink-primary: #222419;
+  --ink-secondary: #54513e;
+  --ink-muted: #686655;
+  --ink-on-dark: #f7fae8;
+
+  /* Botanical & Bakery Crust Accents */
+  --accent-herb: #4c6b40;
+  --accent-herb-hover: #3b5531;
+  --accent-herb-soft: #e6eed8;
+  --accent-terracotta: #b5653b;
+  --accent-terracotta-soft: #f7ebe2;
+  --accent-saffron: #c98f2c;
+
+  /* Borders & Hairlines */
+  --border-subtle: #e2e5d3;
+  --border-strong: #c9ceb3;
+
+  /* Font families - loaded via Google Fonts CDN link in layout.tsx */
+  --font-fraunces: "Fraunces", Georgia, "Times New Roman", serif;
+  --font-jakarta: "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
+  --font-devanagari: "Noto Sans Devanagari", sans-serif;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-canvas: var(--bg-canvas);
+  --color-logo-tint: var(--bg-logo-tint);
+  --color-surface: var(--bg-surface);
+  --color-linen: var(--bg-linen);
+  --color-cocoa: var(--bg-cocoa);
+
+  --color-ink: var(--ink-primary);
+  --color-ink-olive: var(--ink-secondary);
+  --color-ink-muted: var(--ink-muted);
+
+  --color-herb: var(--accent-herb);
+  --color-herb-hover: var(--accent-herb-hover);
+  --color-herb-soft: var(--accent-herb-soft);
+  --color-terracotta: var(--accent-terracotta);
+  --color-terracotta-soft: var(--accent-terracotta-soft);
+  --color-saffron: var(--accent-saffron);
+
+  --color-border: var(--border-subtle);
+  --color-border-strong: var(--border-strong);
+
+  --font-display: var(--font-fraunces), Georgia, "Times New Roman", serif;
+  --font-sans: var(--font-jakarta), var(--font-devanagari), system-ui, -apple-system, sans-serif;
+  --font-devanagari: var(--font-devanagari), sans-serif;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--bg-canvas);
+  color: var(--ink-primary);
+  font-family: var(--font-sans);
+  overflow-x: clip;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background-color: var(--bg-logo-tint);
+  color: var(--ink-primary);
+}
+
+/* Subtle paper-linen texture for hero and signature botanical sections */
+.bg-parchment-glow {
+  background-color: var(--bg-canvas);
+  background-image:
+    radial-gradient(at 15% 15%, rgba(244, 250, 222, 0.95) 0px, transparent 55%),
+    radial-gradient(at 88% 12%, rgba(230, 238, 216, 0.55) 0px, transparent 48%),
+    radial-gradient(at 75% 85%, rgba(247, 235, 226, 0.45) 0px, transparent 50%);
+}
+
+/* Hide scrollbars cleanly for mobile touch-scrollable pill bars */
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Smooth GPU-composited entrance & drawer transitions */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(28px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes gentleFloat {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+.animate-fade-up {
+  animation: fadeUp 0.45s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.animate-slide-in-right {
+  animation: slideInRight 0.28s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.animate-gentle-float {
+  animation: gentleFloat 4.5s ease-in-out infinite;
+}
+
+/* Light, tactile button shine sweep on hover */
+.btn-shine {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-shine::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  transform: translateX(-115%) skewX(-20deg);
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.22) 50%,
+    transparent 100%
+  );
+  transition: transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+  pointer-events: none;
+}
+
+.btn-shine:hover::after {
+  transform: translateX(115%) skewX(-20deg);
+}
+
+/* Editorial scalloped / delicate divider line */
+.editorial-rule {
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    var(--border-strong) 18%,
+    var(--border-strong) 82%,
+    transparent 100%
+  );
+}
+
+/* Accessible focus outline */
+*:focus-visible {
+  outline: 2px solid var(--accent-herb);
+  outline-offset: 2px;
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  .btn-shine::after {
+    display: none;
+  }
+}
+
+@media print {
+  header,
+  footer,
+  .no-print {
+    display: none !important;
+  }
+  body {
+    background: #ffffff;
+    color: #111111;
+  }
 }
