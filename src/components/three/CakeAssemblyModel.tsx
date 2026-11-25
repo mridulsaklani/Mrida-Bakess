@@ -599,6 +599,7 @@ export function CakeAssemblyModel({
   const tier3Ref = useRef<THREE.Group>(null);
   const domeRef = useRef<THREE.Group>(null);
   const sliceGroupRef = useRef<THREE.Group>(null);
+  const slicePlateRef = useRef<THREE.Group>(null);
 
   const animStateRef = useRef({
     lastTrigger: assembleTrigger,
@@ -758,7 +759,12 @@ export function CakeAssemblyModel({
       const pull = a.sliceSlide * 0.96;
       sliceGroupRef.current.position.x = Math.sin(SLICE_MID) * pull;
       sliceGroupRef.current.position.z = Math.cos(SLICE_MID) * pull;
-      sliceGroupRef.current.position.y = Math.sin(a.sliceSlide * Math.PI) * 0.14 + a.sliceSlide * 0.06;
+      sliceGroupRef.current.position.y = Math.sin(a.sliceSlide * Math.PI) * 0.14 + a.sliceSlide * 0.08;
+    }
+    if (slicePlateRef.current) {
+      slicePlateRef.current.visible = a.sliceSlide > 0.08;
+      const plateScale = THREE.MathUtils.clamp((a.sliceSlide - 0.08) / 0.5, 0.01, 1);
+      slicePlateRef.current.scale.setScalar(plateScale);
     }
   });
 
@@ -909,9 +915,29 @@ export function CakeAssemblyModel({
         <CelebrationCandle visible={showCandle} lit={candleLit} />
       </group>
 
-      {/* 9. INTERACTIVE SLIDING CAKE SLICE WEDGE (WHEN CUT) */}
+      {/* 9. INTERACTIVE SLIDING CAKE SLICE WEDGE + PORCELAIN PLATE (WHEN CUT) */}
       {activeCut ? (
         <group ref={sliceGroupRef}>
+          {/* Miniature Cream Porcelain Dessert Plate revealed smoothly under sliding slice */}
+          <group
+            ref={slicePlateRef}
+            visible={false}
+            position={[
+              Math.sin(SLICE_MID) * (baseRadius * 0.52),
+              boardTopY - 0.016,
+              Math.cos(SLICE_MID) * (baseRadius * 0.52),
+            ]}
+          >
+            <mesh castShadow receiveShadow>
+              <cylinderGeometry args={[0.66, 0.54, 0.028, 36]} />
+              <meshStandardMaterial color="#fbfcf6" roughness={0.18} metalness={0.08} />
+            </mesh>
+            <mesh position={[0, 0.015, 0]} rotation={[Math.PI / 2, 0, 0]}>
+              <torusGeometry args={[0.64, 0.01, 8, 36]} />
+              <meshStandardMaterial color="#d4a64a" metalness={0.78} roughness={0.22} />
+            </mesh>
+          </group>
+
           <group position={[0, bottomSpongeY, 0]}>
             <SectorLayer
               radius={baseRadius}

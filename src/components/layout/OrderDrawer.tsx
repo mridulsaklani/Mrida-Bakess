@@ -15,6 +15,7 @@ import {
   ArrowRight,
 } from "lucide-react";
 import { useOrderDrawer } from "@/context/OrderDrawerContext";
+import { BAKERY_INFO } from "@/data/bakery";
 import { buildWhatsAppLink, formatInr, formatOrderSummaryText } from "@/lib/format";
 
 export function OrderDrawer() {
@@ -102,7 +103,7 @@ export function OrderDrawer() {
                     Your 100% Pure Veg Order Tray
                   </h2>
                   <p className="text-xs text-ink-muted">
-                    Confirm pickup or delivery directly on WhatsApp or call 7947111674
+                    WhatsApp {BAKERY_INFO.contact.whatsappRaw} or call {BAKERY_INFO.contact.phoneRaw}
                   </p>
                 </div>
               </div>

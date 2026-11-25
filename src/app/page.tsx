@@ -333,8 +333,8 @@ export default function HomePage() {
           eyebrow="Bagla, Dohandi · Mandi (HP)"
           title="Inside Our Real Bakehouse & Cake Studio"
           description="Step inside our cozy café near Domino's in Bagla, Dohandi — warm pendant lighting, friendly neighborhood seating, our 100% Pure Veg signboard, and real theme cakes crafted for local Mandi celebrations."
-          actionLabel="Visit & Get Directions"
-          actionHref="/contact/"
+          actionLabel="Explore Full Photo Gallery"
+          actionHref="/gallery/"
         />
 
         <div className="mt-10 grid gap-5 lg:grid-cols-12">
@@ -741,8 +741,9 @@ export default function HomePage() {
             Reserve Your Fresh Cake Batch Before Weekend Slots Fill Up
           </h2>
           <p className="mx-auto mt-4 max-w-xl text-sm leading-relaxed text-logo-tint/85 sm:text-base">
-            Call Manu &amp; Manisha at <strong>{BAKERY_INFO.contact.phoneRaw}</strong>, message on
-            WhatsApp, or drop by near Domino&apos;s, Bagla, Dohandi, Mandi.
+            Call <strong>{BAKERY_INFO.contact.phoneRaw}</strong>, WhatsApp Manu &amp; Manisha on{" "}
+            <strong>{BAKERY_INFO.contact.whatsappRaw}</strong>, or visit us near Domino&apos;s,
+            Bagla, Dohandi, Mandi.
           </p>
           <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row sm:flex-wrap sm:gap-3.5">
             <a
@@ -754,7 +755,7 @@ export default function HomePage() {
               className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-herb px-6 py-3.5 text-sm font-semibold text-white transition hover:bg-herb-hover sm:w-auto"
             >
               <MessageCircle className="h-4 w-4" />
-              <span>Order on WhatsApp</span>
+              <span>WhatsApp {BAKERY_INFO.contact.whatsappRaw}</span>
             </a>
             <a
               href={BAKERY_INFO.contact.phoneHref}

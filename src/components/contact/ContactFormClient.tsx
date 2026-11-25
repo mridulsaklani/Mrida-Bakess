@@ -60,8 +60,9 @@ export function ContactFormClient() {
           Thank you, {name || "Friend"}!
         </h3>
         <p className="mx-auto max-w-md text-sm leading-relaxed text-ink-olive">
-          Your 100% Pure Veg order draft is ready! Tap WhatsApp below to send it directly to Manu
-          &amp; Manisha, or call us anytime between <strong>8:00 AM – 8:00 PM</strong> at{" "}
+          Your 100% Pure Veg order draft is ready! Tap WhatsApp below (
+          <strong>{BAKERY_INFO.contact.whatsappRaw}</strong>) to send it directly to Manu &amp;
+          Manisha, or call anytime between <strong>8:00 AM – 8:00 PM</strong> at{" "}
           <a href={BAKERY_INFO.contact.phoneHref} className="font-semibold text-herb underline">
             {BAKERY_INFO.contact.phoneRaw}
           </a>

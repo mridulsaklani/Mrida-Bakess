@@ -84,6 +84,21 @@ export function buildBakeryJsonLd() {
     ],
     logo: `${SITE_URL}/images/mrida-logo.jpg`,
     telephone: `+91-${BAKERY_INFO.contact.phoneRaw}`,
+    contactPoint: [
+      {
+        "@type": "ContactPoint",
+        telephone: `+91-${BAKERY_INFO.contact.phoneRaw}`,
+        contactType: "customer service",
+        availableLanguage: ["English", "Hindi"],
+      },
+      {
+        "@type": "ContactPoint",
+        telephone: `+91-${BAKERY_INFO.contact.whatsappRaw}`,
+        contactType: "reservations",
+        contactOption: "WhatsApp",
+        availableLanguage: ["English", "Hindi"],
+      },
+    ],
     email: BAKERY_INFO.contact.email,
     sameAs: [BAKERY_INFO.contact.instagramUrl],
     hasMap: BAKERY_INFO.contact.mapsUrl,
@@ -192,6 +207,24 @@ export function buildAboutPageJsonLd() {
     name: `About ${BAKERY_INFO.brandName} — Manu & Manisha Thakur`,
     url: `${SITE_URL}/about/`,
     mainEntity: { "@id": `${SITE_URL}/#bakery` },
+  };
+}
+
+export function buildGalleryJsonLd(
+  photos: { src: string; title: string; caption: string }[]
+) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "ImageGallery",
+    name: `${BAKERY_INFO.brandName} Photo Gallery — Real Shop & 100% Pure Veg Cakes`,
+    url: `${SITE_URL}/gallery/`,
+    about: { "@id": `${SITE_URL}/#bakery` },
+    associatedMedia: photos.map((p) => ({
+      "@type": "ImageObject",
+      contentUrl: `${SITE_URL}${p.src}`,
+      name: p.title,
+      caption: p.caption,
+    })),
   };
 }
 

@@ -46,7 +46,7 @@ export const FAQ_ITEMS: FaqItem[] = [
     category: "Ordering",
     question: "How far in advance should I order a custom celebration cake?",
     answer:
-      "Because Manu and Manisha bake every custom order completely fresh, we recommend booking 24–48 hours ahead for kids theme, doll, baby shower, or single-tier custom cakes, and 4–5 days ahead for two-tier or wedding cakes. Need an urgent birthday cake today? Call 7947111674 or WhatsApp us between 8:00 AM and 8:00 PM—we keep fresh 100% Pure Veg sponges ready for 3–4 hour same-day frosting!",
+      "Because Manu and Manisha bake every custom order completely fresh, we recommend booking 24–48 hours ahead for kids theme, doll, baby shower, or single-tier custom cakes, and 4–5 days ahead for two-tier or wedding cakes. Need an urgent birthday cake today? Call 7947111674 or WhatsApp us at 9805155222 between 8:00 AM and 8:00 PM—we keep fresh 100% Pure Veg sponges ready for 3–4 hour same-day frosting!",
   },
   {
     id: "faq-hours",
@@ -74,6 +74,6 @@ export const FAQ_ITEMS: FaqItem[] = [
     category: "Ordering",
     question: "Can we customize sweetness, flavors, or theme designs for birthdays & baby showers?",
     answer:
-      "Absolutely! You can share any reference photo—excavator builder themes, rosette princess doll cakes, gender reveal baby showers, or floral anniversary tiers—plus request lower sugar levels. Message us on WhatsApp or call 7947111674 anytime between 8 AM and 8 PM.",
+      "Absolutely! You can share any reference photo—excavator builder themes, rosette princess doll cakes, gender reveal baby showers, or floral anniversary tiers—plus request lower sugar levels. WhatsApp 9805155222 or call 7947111674 anytime between 8 AM and 8 PM.",
   },
 ];

@@ -68,6 +68,11 @@ export function Footer() {
                 </Link>
               </li>
               <li>
+                <Link href="/gallery/" className="hover:text-white transition">
+                  Photo Gallery
+                </Link>
+              </li>
+              <li>
                 <Link href="/about/" className="hover:text-white transition">
                   About Our Bakehouse
                 </Link>
@@ -137,14 +142,24 @@ export function Footer() {
                   </a>
                 </div>
               </li>
-              <li className="flex items-center gap-2.5">
-                <Phone className="h-4 w-4 shrink-0 text-logo-tint/70" />
-                <a
-                  href={BAKERY_INFO.contact.phoneHref}
-                  className="font-semibold text-logo-tint hover:text-white transition"
-                >
-                  {BAKERY_INFO.contact.phoneDisplay} ({BAKERY_INFO.contact.phoneRaw})
-                </a>
+              <li className="flex items-start gap-2.5">
+                <Phone className="mt-0.5 h-4 w-4 shrink-0 text-logo-tint/70" />
+                <div className="space-y-0.5">
+                  <a
+                    href={BAKERY_INFO.contact.phoneHref}
+                    className="block font-semibold text-logo-tint hover:text-white transition"
+                  >
+                    Call: {BAKERY_INFO.contact.phoneRaw}
+                  </a>
+                  <a
+                    href={buildWhatsAppLink("Hi Mrida Bakess! I'd like to inquire about a cake.")}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block text-xs text-logo-tint/85 hover:text-white transition"
+                  >
+                    WhatsApp: {BAKERY_INFO.contact.whatsappRaw}
+                  </a>
+                </div>
               </li>
               <li className="flex items-center gap-2.5">
                 <InstagramIcon className="h-4 w-4 shrink-0 text-logo-tint/70" />

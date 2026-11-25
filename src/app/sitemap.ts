@@ -27,6 +27,20 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.9,
     },
     {
+      url: `${SITE_URL}/gallery/`,
+      lastModified,
+      changeFrequency: "weekly",
+      priority: 0.85,
+      images: [
+        `${SITE_URL}/images/shop-exterior.jpg`,
+        `${SITE_URL}/images/shop-signboard.jpg`,
+        `${SITE_URL}/images/shop-evening-guests.jpg`,
+        `${SITE_URL}/images/cake-excavator-custom.jpg`,
+        `${SITE_URL}/images/cake-doll-rosette.jpg`,
+        `${SITE_URL}/images/cake-baby-shower-reveal.jpg`,
+      ],
+    },
+    {
       url: `${SITE_URL}/about/`,
       lastModified,
       changeFrequency: "monthly",

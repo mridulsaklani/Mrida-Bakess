@@ -132,14 +132,30 @@ export default function ContactPage() {
 
                   <li className="flex items-start gap-3">
                     <Phone className="mt-0.5 h-5 w-5 shrink-0 text-herb" />
-                    <div>
-                      <p className="font-semibold text-ink">Call &amp; Order Line</p>
-                      <a
-                        href={BAKERY_INFO.contact.phoneHref}
-                        className="text-base font-semibold text-herb hover:underline"
-                      >
-                        {BAKERY_INFO.contact.phoneDisplay} ({BAKERY_INFO.contact.phoneRaw})
-                      </a>
+                    <div className="space-y-1">
+                      <p className="font-semibold text-ink">Call &amp; WhatsApp Order Desk</p>
+                      <p>
+                        Call:{" "}
+                        <a
+                          href={BAKERY_INFO.contact.phoneHref}
+                          className="font-semibold text-herb hover:underline"
+                        >
+                          {BAKERY_INFO.contact.phoneDisplay} ({BAKERY_INFO.contact.phoneRaw})
+                        </a>
+                      </p>
+                      <p>
+                        WhatsApp:{" "}
+                        <a
+                          href={buildWhatsAppLink(
+                            "Hi Manu & Manisha (Mrida Bakess, Mandi)! I'd like to inquire about an order."
+                          )}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="font-semibold text-herb hover:underline"
+                        >
+                          {BAKERY_INFO.contact.whatsappDisplay} ({BAKERY_INFO.contact.whatsappRaw})
+                        </a>
+                      </p>
                     </div>
                   </li>
 

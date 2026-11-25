@@ -19,7 +19,9 @@ export const BAKERY_INFO = {
     phoneDisplay: "+91 79471 11674",
     phoneRaw: "7947111674",
     phoneHref: "tel:7947111674",
-    whatsappNumber: "917947111674",
+    whatsappNumber: "919805155222",
+    whatsappRaw: "9805155222",
+    whatsappDisplay: "+91 98051 55222",
     email: "orders@mridabakess.in",
     instagramHandle: "@mridaabakes_9",
     instagramUrl: "https://www.instagram.com/mridaabakes_9/",
@@ -33,7 +35,7 @@ export const BAKERY_INFO = {
       "https://www.google.com/maps/search/?api=1&query=Mrida+Bakess+Near+Dominos+Bagla+Dohandi+Mandi+175021+Himachal+Pradesh",
     hours: [{ days: "Open Daily (Mon – Sun)", time: "8:00 AM – 8:00 PM" }],
     notice:
-      "100% Pure Veg dine-in & takeaway counter near Domino's, Bagla, Dohandi, Mandi. Call 7947111674 or WhatsApp us between 8:00 AM – 8:00 PM for fresh daily batches & custom cake slots.",
+      "100% Pure Veg dine-in & takeaway counter near Domino's, Bagla, Dohandi, Mandi. Call 7947111674 or WhatsApp 9805155222 between 8:00 AM – 8:00 PM for fresh daily batches & custom cake slots.",
   },
   stats: [
     { value: "100%", label: "Pure Veg & Eggless" },

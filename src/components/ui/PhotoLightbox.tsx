@@ -85,8 +85,9 @@ export function PhotoLightboxGrid({
                 src={current.src}
                 alt={current.alt}
                 fill
+                draggable={false}
                 sizes="100vw"
-                className="object-contain"
+                className="select-none object-contain"
               />
             </div>
 
