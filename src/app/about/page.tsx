@@ -12,7 +12,7 @@ import {
   PhoneCall,
 } from "lucide-react";
 import { BAKERY_INFO, FOUNDERS, QUALITY_PILLARS } from "@/data/bakery";
-import { buildBreadcrumbJsonLd, createPageMetadata } from "@/lib/seo";
+import { buildAboutPageJsonLd, buildBreadcrumbJsonLd, createPageMetadata } from "@/lib/seo";
 import { BrandSeal } from "@/components/ui/BrandSeal";
 import { PureVegBadge } from "@/components/ui/PureVegBadge";
 import { JsonLdScript } from "@/components/ui/JsonLdScript";
@@ -22,9 +22,9 @@ import { ScrollReveal } from "@/components/ui/ScrollReveal";
 import { GiftTrunk3DLoader } from "@/components/three/GiftTrunk3DLoader";
 
 export const metadata = createPageMetadata({
-  title: "About Mrida Bakess — Manu (Naveen Thakur) & Manisha Thakur | 100% Pure Veg",
+  title: "About Manu & Manisha — 100% Pure Veg Bakery",
   description:
-    "Meet Manu (Naveen Thakur) and Manisha Thakur, founders of Mrida Bakess (मृदा Bakess) near Domino's, Bagla, Dohandi, Mandi-175021 — celebrated for 100% Pure Veg organic cakes, cozy dine-in café & honest rates.",
+    "Meet Manu (Naveen Thakur) & Manisha Thakur of Mrida Bakess near Domino's, Bagla, Mandi-175021 — 100% Pure Veg organic cakes & cozy café.",
   path: "/about",
   keywords: [
     "Naveen Thakur baker Mandi",
@@ -91,6 +91,7 @@ const SHOP_GALLERY: LightboxPhoto[] = [
 ];
 
 export default function AboutPage() {
+  const aboutSchema = buildAboutPageJsonLd();
   const breadcrumb = buildBreadcrumbJsonLd([
     { name: "Home", path: "/" },
     { name: "About Us", path: "/about/" },
@@ -98,6 +99,7 @@ export default function AboutPage() {
 
   return (
     <>
+      <JsonLdScript data={aboutSchema} />
       <JsonLdScript data={breadcrumb} />
 
       {/* ==================== HERO STORY ==================== */}

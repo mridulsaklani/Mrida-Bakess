@@ -32,10 +32,11 @@ import { ScrollReveal } from "@/components/ui/ScrollReveal";
 import { HeroCounter3DLoader } from "@/components/three/HeroCounter3DLoader";
 
 export const metadata = createPageMetadata({
-  title: `${BAKERY_INFO.brandName} (मृदा Bakess) — 100% Pure Veg Organic Cakes | Mandi, HP`,
+  title: "Mrida Bakess (मृदा) — 100% Pure Veg Cakes | Mandi, HP",
   description:
-    "Discover handcrafted 100% Pure Veg organic cakes, eggless pastries, butter croissants, and bespoke theme cakes by Manu (Naveen Thakur) & Manisha Thakur near Domino's, Bagla, Dohandi, Mandi-175021.",
+    "100% Pure Veg organic cakes, pastries & custom birthday cakes in Bagla, Dohandi, Mandi-175021 by Manu & Manisha Thakur. Open 8 AM–8 PM. Call 7947111674.",
   path: "/",
+  absoluteTitle: true,
   keywords: [
     "100% Pure Veg bakery Mandi",
     "Mrida Bakess Bagla Dohandi",

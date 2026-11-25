@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import {
@@ -32,6 +32,20 @@ export function OrderDrawer() {
 
   const [pickupNote, setPickupNote] = useState("");
   const [copied, setCopied] = useState(false);
+
+  useEffect(() => {
+    if (!isOpen) return;
+    const prevOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") closeDrawer();
+    };
+    window.addEventListener("keydown", onKey);
+    return () => {
+      document.body.style.overflow = prevOverflow;
+      window.removeEventListener("keydown", onKey);
+    };
+  }, [isOpen, closeDrawer]);
 
   const summaryText = formatOrderSummaryText(items, pickupNote.trim() || undefined);
   const whatsappUrl = buildWhatsAppLink(summaryText);

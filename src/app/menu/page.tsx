@@ -9,8 +9,9 @@ import { BakeryStudio3DLoader } from "@/components/three/BakeryStudio3DLoader";
 import { MenuCatalogClient } from "@/components/menu/MenuCatalogClient";
 
 export const metadata = createPageMetadata({
-  title: "100% Pure Veg Bakery Menu & Rates — Cakes, Pastries, Tea Loaves & Cookies",
-  description: `Explore the full ${BAKERY_INFO.brandName} 100% Pure Veg menu and transparent INR rate card: eggless celebration cakes from ₹460, Belgian truffle pastries, saffron pistachio cakes, butter croissants & gift boxes in Bagla, Mandi.`,
+  title: "100% Pure Veg Menu, INR Rates & 3D Studio",
+  description:
+    "Explore Mrida Bakess 100% Pure Veg menu & INR rate card in Mandi: eggless cakes from ₹460, pastries from ₹85 & 3D Knife Cut studio.",
   path: "/menu",
   keywords: [
     "Mrida Bakess menu",
@@ -78,11 +79,27 @@ export default function MenuPage() {
       </section>
 
       {/* ==================== 3D INTERACTIVE CAKE CASE & ASSEMBLER ==================== */}
-      <section className="mx-auto max-w-7xl px-4 pt-10 sm:px-6 lg:px-8 lg:pt-14">
+      <section aria-labelledby="studio-3d-heading" className="mx-auto max-w-7xl px-4 pt-10 sm:px-6 lg:px-8 lg:pt-14">
+        <div className="mb-5 flex flex-wrap items-end justify-between gap-2">
+          <div>
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-herb">
+              Interactive 360° Preview
+            </p>
+            <h2 id="studio-3d-heading" className="font-display text-2xl font-semibold text-ink sm:text-3xl">
+              3D Cake Display Case &amp; Knife Cut Studio
+            </h2>
+          </div>
+          <p className="text-xs text-ink-muted">
+            Slice a cake wedge, explode every sponge layer, or type a custom plaque
+          </p>
+        </div>
         <BakeryStudio3DLoader />
       </section>
 
-      <section className="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8 lg:py-14">
+      <section aria-labelledby="full-catalog-heading" className="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8 lg:py-14">
+        <h2 id="full-catalog-heading" className="sr-only">
+          Complete {BAKERY_INFO.brandName} 100% Pure Veg Menu &amp; Price Catalog
+        </h2>
         <Suspense
           fallback={
             <div className="rounded-3xl border border-border bg-surface p-12 text-center text-sm text-ink-muted">

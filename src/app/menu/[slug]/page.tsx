@@ -33,10 +33,14 @@ export async function generateMetadata({
   }
 
   const basePrice = item.variants[0]?.priceInr ?? 0;
+  const conciseDesc =
+    item.shortDescription.length > 110
+      ? `${item.shortDescription.slice(0, 108).replace(/\s+\S*$/, "")}.`
+      : item.shortDescription;
 
   return createPageMetadata({
     title: `${item.name} (${formatInr(basePrice)})`,
-    description: `${item.shortDescription} 100% Pure Veg & baked fresh by Manu & Manisha Thakur at Mrida Bakess, Mandi.`,
+    description: `${conciseDesc} 100% Pure Veg at Mrida Bakess, Mandi.`,
     path: `/menu/${item.slug}`,
     keywords: [item.name, ...item.tags, ...item.ingredients],
     image: item.image,

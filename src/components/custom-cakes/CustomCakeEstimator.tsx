@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import Image from "next/image";
 import { CalendarHeart, Check, Copy, MessageCircle, Sparkles, ZoomIn, X } from "lucide-react";
 import {
@@ -46,6 +46,15 @@ export function CustomCakeEstimator() {
   const [themeNotes, setThemeNotes] = useState("");
   const [copied, setCopied] = useState(false);
   const [zoomCake, setZoomCake] = useState<CustomCakeShowcase | null>(null);
+
+  useEffect(() => {
+    if (!zoomCake) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setZoomCake(null);
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [zoomCake]);
 
   const visibleShowcases = useMemo(() => {
     if (occasionFilter === "All") return CUSTOM_CAKE_SHOWCASES;

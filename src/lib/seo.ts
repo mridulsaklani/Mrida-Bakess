@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { BAKERY_INFO, SITE_URL } from "@/data/bakery";
 import { FAQ_ITEMS } from "@/data/testimonials-faq";
 import { MENU_ITEMS } from "@/data/menu";
+import { CUSTOM_CAKE_TIER_RATES } from "@/data/custom-cakes";
 import type { MenuItem } from "@/types/bakery";
 
 interface PageMetaInput {
@@ -10,6 +11,7 @@ interface PageMetaInput {
   path: string;
   keywords?: string[];
   image?: string;
+  absoluteTitle?: boolean;
 }
 
 export function createPageMetadata({
@@ -18,12 +20,13 @@ export function createPageMetadata({
   path,
   keywords = [],
   image = "/images/hero-spread.jpg",
+  absoluteTitle = false,
 }: PageMetaInput): Metadata {
   const normalizedPath = path === "/" ? "/" : `${path.replace(/\/$/, "")}/`;
   const canonicalUrl = `${SITE_URL}${normalizedPath}`;
 
   return {
-    title,
+    title: absoluteTitle ? { absolute: title } : title,
     description,
     keywords: [
       "Mrida Bakess",
@@ -34,14 +37,14 @@ export function createPageMetadata({
       "eggless organic cakes Himachal Pradesh",
       "Manu Naveen Thakur baker",
       "Manisha Thakur cake artist",
-      "affordable artisan bakery",
+      "custom birthday cakes Mandi 175021",
       ...keywords,
     ],
     alternates: {
       canonical: canonicalUrl,
     },
     openGraph: {
-      title,
+      title: absoluteTitle ? title : `${title} | ${BAKERY_INFO.brandName}`,
       description,
       url: canonicalUrl,
       siteName: BAKERY_INFO.brandName,
@@ -58,7 +61,7 @@ export function createPageMetadata({
     },
     twitter: {
       card: "summary_large_image",
-      title,
+      title: absoluteTitle ? title : `${title} | ${BAKERY_INFO.brandName}`,
       description,
       images: [image],
     },
@@ -69,17 +72,31 @@ export function buildBakeryJsonLd() {
   return {
     "@context": "https://schema.org",
     "@type": "Bakery",
+    "@id": `${SITE_URL}/#bakery`,
     name: BAKERY_INFO.brandName,
     alternateName: BAKERY_INFO.alternateBrandSpellings,
     description: BAKERY_INFO.heroSubtitle,
     url: SITE_URL,
-    image: `${SITE_URL}/images/shop-exterior.jpg`,
+    image: [
+      `${SITE_URL}/images/shop-exterior.jpg`,
+      `${SITE_URL}/images/hero-spread.jpg`,
+      `${SITE_URL}/images/shop-signboard.jpg`,
+    ],
     logo: `${SITE_URL}/images/mrida-logo.jpg`,
     telephone: `+91-${BAKERY_INFO.contact.phoneRaw}`,
     email: BAKERY_INFO.contact.email,
     sameAs: [BAKERY_INFO.contact.instagramUrl],
+    hasMap: BAKERY_INFO.contact.mapsUrl,
     priceRange: "₹₹",
+    currenciesAccepted: "INR",
+    paymentAccepted: "Cash, UPI",
     servesCuisine: ["100% Pure Veg Cakes", "Eggless Pastries", "Organic Bakery", "Custom Theme Cakes"],
+    areaServed: [
+      { "@type": "Place", name: "Bagla, Mandi, Himachal Pradesh" },
+      { "@type": "Place", name: "Dohandi, Mandi, Himachal Pradesh" },
+      { "@type": "Place", name: "Nerchowk, Mandi, Himachal Pradesh" },
+      { "@type": "City", name: "Mandi, Himachal Pradesh" },
+    ],
     founders: [
       {
         "@type": "Person",
@@ -150,6 +167,34 @@ export function buildMenuJsonLd() {
   };
 }
 
+export function buildCustomCakesJsonLd() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "OfferCatalog",
+    name: `${BAKERY_INFO.brandName} Custom 100% Pure Veg Celebration Cakes`,
+    url: `${SITE_URL}/custom-cakes/`,
+    provider: { "@id": `${SITE_URL}/#bakery` },
+    itemListElement: CUSTOM_CAKE_TIER_RATES.map((tier) => ({
+      "@type": "Offer",
+      name: `${tier.tierName} (${tier.weightRange})`,
+      description: tier.includes,
+      priceCurrency: "INR",
+      price: tier.startingPriceInr,
+      availability: "https://schema.org/InStock",
+    })),
+  };
+}
+
+export function buildAboutPageJsonLd() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "AboutPage",
+    name: `About ${BAKERY_INFO.brandName} — Manu & Manisha Thakur`,
+    url: `${SITE_URL}/about/`,
+    mainEntity: { "@id": `${SITE_URL}/#bakery` },
+  };
+}
+
 export function buildProductJsonLd(item: MenuItem) {
   const prices = item.variants.map((v) => v.priceInr);
   const lowPrice = Math.min(...prices);
@@ -172,6 +217,7 @@ export function buildProductJsonLd(item: MenuItem) {
       highPrice,
       offerCount: item.variants.length,
       availability: "https://schema.org/InStock",
+      seller: { "@id": `${SITE_URL}/#bakery` },
     },
   };
 }

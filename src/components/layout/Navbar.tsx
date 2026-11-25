@@ -125,7 +125,10 @@ export function Navbar() {
 
           <button
             type="button"
-            onClick={openDrawer}
+            onClick={() => {
+              setMobileOpen(false);
+              openDrawer();
+            }}
             className="relative inline-flex h-10 items-center gap-1.5 rounded-full bg-ink px-3.5 text-xs font-semibold text-logo-tint shadow-xs transition hover:bg-herb hover:text-white active:scale-95 cursor-pointer sm:px-4 sm:gap-2 sm:text-sm"
             aria-label={`Open order list (${totalItems} items)`}
           >

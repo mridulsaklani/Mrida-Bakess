@@ -19,9 +19,9 @@ import { ContactFormClient } from "@/components/contact/ContactFormClient";
 import { FaqAccordion } from "@/components/contact/FaqAccordion";
 
 export const metadata = createPageMetadata({
-  title: "Visit & Contact Mrida Bakess — Bagla, Dohandi, Mandi-175021",
+  title: "Visit & Contact — Bagla, Mandi (8 AM–8 PM)",
   description:
-    "Visit 100% Pure Veg Mrida Bakess near Domino's, Bagla, Dohandi, Mandi – 175021, Himachal Pradesh. Open daily 8:00 AM to 8:00 PM. Call 7947111674 or WhatsApp Manu & Manisha Thakur.",
+    "Visit Mrida Bakess near Domino's, Bagla, Dohandi, Mandi-175021 (HP) daily 8 AM–8 PM. Call 7947111674 or WhatsApp for 100% Pure Veg cakes & custom orders.",
   path: "/contact",
   keywords: [
     "Mrida Bakess address Bagla Dohandi Mandi",

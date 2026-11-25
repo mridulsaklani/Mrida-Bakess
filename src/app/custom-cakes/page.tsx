@@ -1,15 +1,15 @@
 import { CalendarHeart, CheckCircle2 } from "lucide-react";
 import { CUSTOM_CAKE_TIER_RATES } from "@/data/custom-cakes";
-import { buildBreadcrumbJsonLd, createPageMetadata } from "@/lib/seo";
+import { buildBreadcrumbJsonLd, buildCustomCakesJsonLd, createPageMetadata } from "@/lib/seo";
 import { formatInr } from "@/lib/format";
 import { JsonLdScript } from "@/components/ui/JsonLdScript";
 import { PureVegBadge } from "@/components/ui/PureVegBadge";
 import { CustomCakeEstimator } from "@/components/custom-cakes/CustomCakeEstimator";
 
 export const metadata = createPageMetadata({
-  title: "100% Pure Veg Custom Celebration Cakes — Birthdays, Dolls, Kids & Tiers",
+  title: "Custom Birthday, Doll & Wedding Cakes",
   description:
-    "Order high-demand 100% Pure Veg custom cakes handcrafted by Manisha Thakur & Manu at Mrida Bakess (Mandi). Explore real kids excavator cakes, doll rosette cakes, baby shower cakes, botanical tiers & instant estimator.",
+    "Order 100% Pure Veg custom birthday, kids excavator, princess doll, baby shower & tiered wedding cakes in Bagla, Mandi from ₹550. Live 3D builder & quote.",
   path: "/custom-cakes",
   keywords: [
     "100% Pure Veg custom birthday cakes Mandi",
@@ -22,6 +22,7 @@ export const metadata = createPageMetadata({
 });
 
 export default function CustomCakesPage() {
+  const customCatalogSchema = buildCustomCakesJsonLd();
   const breadcrumb = buildBreadcrumbJsonLd([
     { name: "Home", path: "/" },
     { name: "Custom Cakes", path: "/custom-cakes/" },
@@ -29,6 +30,7 @@ export default function CustomCakesPage() {
 
   return (
     <>
+      <JsonLdScript data={customCatalogSchema} />
       <JsonLdScript data={breadcrumb} />
 
       <section className="bg-parchment-glow border-b border-border py-12 sm:py-16">

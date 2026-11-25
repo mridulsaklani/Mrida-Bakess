@@ -32,7 +32,7 @@ export function ScrollReveal({ children, className = "", delayMs = 0 }: ScrollRe
           observer.disconnect();
         }
       },
-      { threshold: 0.08, rootMargin: "0px 0px -30px 0px" }
+      { threshold: 0.05, rootMargin: "120px 0px 80px 0px" }
     );
 
     observer.observe(el);

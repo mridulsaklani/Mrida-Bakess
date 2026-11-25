@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { useFrame } from "@react-three/fiber";
 import * as THREE from "three";
 
@@ -16,6 +16,12 @@ export function PatisserieTrioModel() {
   const boardRef = useRef<THREE.Group>(null);
   const [hovered, setHovered] = useState<"croissant" | "truffle" | "tart" | null>(null);
   const [bounce, setBounce] = useState<{ item: string; at: number } | null>(null);
+
+  useEffect(() => {
+    return () => {
+      document.body.style.cursor = "auto";
+    };
+  }, []);
 
   const croissantSegments = useMemo(() => {
     return [-3, -2, -1, 0, 1, 2, 3].map((idx) => {
